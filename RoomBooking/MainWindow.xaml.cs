@@ -11,8 +11,6 @@ namespace RoomBooking
         public MainWindow()
         {
             InitializeComponent();
-
-            // Zaktualizowana, dużo większa lista sal
             Rooms = new ObservableCollection<Room>
     {
         new Room { Name = "Sala A320", Status = "WOLNA" },
