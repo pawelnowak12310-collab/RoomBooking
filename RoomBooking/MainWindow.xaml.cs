@@ -35,14 +35,13 @@ namespace RoomBooking
             var sala = RoomsList.SelectedItem as Room;
             if (sala == null) return;
 
-            // 1. Sprawdzamy czy wybrana sala jest wolna
+            //czy wybrana sala jest wolna
             if (sala.Status != "WOLNA")
             {
                 MessageBox.Show("Ta sala jest już zajęta!");
                 return;
             }
 
-            // 2. Pobieramy i czyścimy ze spacji imię i nazwisko
             string imie = txtImie.Text.Trim();
             string nazwisko = txtNazwisko.Text.Trim();
 
@@ -52,24 +51,20 @@ namespace RoomBooking
                 return;
             }
 
-            // Tworzymy dokładny napis, jakiego będziemy szukać u innych sal
             string sprawdzanyStatus = "Zajęta przez: " + imie + " " + nazwisko;
 
-            // 3. Sprawdzamy, czy TA KONKRETNA OSOBA ma już salę
+            //Sprawdzamy czy OSOBA ma już salę
             foreach (var r in Rooms)
             {
-                // Jeśli jakakolwiek sala ma dokładnie taki sam status (czyli to samo imię i nazwisko)
                 if (r.Status == sprawdzanyStatus)
                 {
                     MessageBox.Show("Masz już zarezerwowaną inną salę!");
-                    return; // Przerywamy, nie pozwalamy zarezerwować
+                    return; 
                 }
             }
 
-            // 4. Sukces: Zapisujemy salę na tę osobę
+            //Zapis sali na osobę
             sala.Status = sprawdzanyStatus;
-
-            // Czyścimy formularz
             txtImie.Clear();
             txtNazwisko.Clear();
         }
