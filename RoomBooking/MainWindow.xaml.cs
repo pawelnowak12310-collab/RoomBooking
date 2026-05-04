@@ -18,6 +18,8 @@ namespace RoomBooking
             this.DataContext = RoomService.Rooms;
             RoomsList.ItemsSource = RoomService.Rooms;
             _roomsView = CollectionViewSource.GetDefaultView(RoomService.Rooms);
+
+            this.DataContext = this;
         }
 
         private void BookButton_Click(object sender, RoutedEventArgs e)
